@@ -1,32 +1,14 @@
-from ubuntu:latest
+from ubuntu:18.04
 LABEL maintainer="Raiyan Yahya <raiyanyahyadeveloper@gmail.com>"
 
-
-
-#need this to generate the locale
-ENV DEBIAN_FRONTEND noninteractive
-
-#Update system
-RUN apt update -y && apt install software-properties-common -y && apt-get update -y
-
-# Installing build dependencies
-RUN apt-get install -y sudo wget git python3-pip curl zsh wget nano lsof
-
-
-# Prepare environment UTF-8
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y locales
-RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && locale-gen
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
-
-#Add a dev user and make zsh default
-RUN useradd -m -s /bin/zsh --home /home/devuser -G sudo devuser && echo "devuser:devuser" | chpasswd
-
-RUN rm -rf /var/lib/apt/lists/* && \
+RUN apt update -y &&  apt-get update -y
+RUN apt-get install --no-install-recommends -y sudo wget git python3-pip curl zsh wget nano lsof software-properties-common && \
+        rm -rf /var/lib/apt/lists/* && \
 	apt-get clean && \
-	apt-get autoclean && \
-	apt-get autoremove
+        apt-get autoclean && \
+        apt-get autoremove
+
+RUN useradd -m -s /bin/zsh --home /home/devuser -G sudo devuser && echo "devuser:devuser" | chpasswd
 	
 USER devuser
 ENV TERM xterm
