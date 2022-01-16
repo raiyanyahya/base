@@ -1,2 +1,2 @@
 # base
-A light and simple base freshenv environment.
+A light and simple freshenv flavour called ```base```.
