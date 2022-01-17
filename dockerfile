@@ -14,6 +14,6 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 USER devuser
 ENV TERM xterm
 WORKDIR /home/devuser
-RUN echo 'export PATH="$HOME/.local/bin:$PATH"' >> .zshrc
+#RUN echo 'export PATH="$HOME/.local/bin:$PATH"' >> .zshrc
 
 CMD ["zsh"]
