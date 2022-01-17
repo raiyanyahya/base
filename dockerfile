@@ -9,11 +9,11 @@ RUN apt-get install --no-install-recommends -y sudo wget git python3-pip curl zs
         apt-get autoremove
 
 RUN useradd -m -s /bin/zsh --home /home/devuser -G sudo devuser && echo "devuser:devuser" | chpasswd
+RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 
 USER devuser
 ENV TERM xterm
 WORKDIR /home/devuser
-RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 RUN echo 'export PATH="$HOME/.local/bin:$PATH"' >> .zshrc
 
 CMD ["zsh"]
