@@ -7,7 +7,7 @@ RUN apt-get install --no-install-recommends -y sudo wget git curl zsh wget nano 
 	apt-get clean && \
         apt-get autoclean && \
         apt-get autoremove
-ENV http_proxy http://123
+ENV ZSH_DISABLE_COMPFIX true
 
 USER root
 ENV TERM xterm
