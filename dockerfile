@@ -8,12 +8,10 @@ RUN apt-get install --no-install-recommends -y sudo wget git curl zsh wget nano 
         apt-get autoclean && \
         apt-get autoremove
 
-RUN useradd -m -s /bin/zsh --home /home/devuser -G sudo devuser && echo "devuser:devuser" | chpasswd
-
-USER devuser
+USER root
 ENV TERM xterm
-WORKDIR /home/devuser
+WORKDIR /home
 RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
-
+RUN chmod -R 755 /usr/local/share/zsh/site-functions
 
 CMD ["zsh"]
