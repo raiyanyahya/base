@@ -11,7 +11,7 @@ RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -
 
 USER root
 ENV TERM xterm
-WORKDIR /home/devuser
+WORKDIR /home
 
 
 CMD ["zsh"]
