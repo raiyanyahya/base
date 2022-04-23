@@ -7,11 +7,10 @@ RUN apt-get install --no-install-recommends -y sudo wget git curl zsh wget nano 
 	apt-get clean && \
         apt-get autoclean && \
         apt-get autoremove
-RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 
 USER root
 ENV TERM xterm
 WORKDIR /home
-
+RUN wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 
 CMD ["zsh"]
